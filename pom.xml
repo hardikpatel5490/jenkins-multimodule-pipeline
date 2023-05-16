@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kn</groupId>
+  <artifactId>poc</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+  <description>PoC to setup a multi-module-project pipeline with Jenkins. Code changes in one module should only trigger a rebuild if the changed module to increase CI feedback.</description>
+  <properties>
+    <revision>dev-SNAPSHOT</revision>
+  </properties>
+  <modules>
+    <module>module1</module>
+    <module>module2</module>
+  </modules>
+</project>
