@@ -6,7 +6,7 @@ pipeline {
   }
   stages {
     stage('Module1') {
-      when { changeset "module1/*" }
+      when { changeset "module1/**" }
       stages {
         stage('Packaging') {
           steps {
@@ -17,7 +17,7 @@ pipeline {
           }
         }
         stage('Installing') {
-          when { changeset "module1/*" }
+          when { changeset "module1/**" }
           steps {
             cd module1
             sh 'mvn  -B -ntp install'
