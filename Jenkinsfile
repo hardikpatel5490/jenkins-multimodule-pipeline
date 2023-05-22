@@ -3,6 +3,7 @@ pipeline {
   tools {
     maven 'Maven 3.9.0'
     jdk 'jdk17'
+    git 'Default'
   }
   stages {
     stage('Module1') {
