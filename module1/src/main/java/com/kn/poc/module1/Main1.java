@@ -1,5 +1,6 @@
 package com.kn.poc.module1;
 
+// change
 public class Main1 {
 
   public static String getMagicValue() {
