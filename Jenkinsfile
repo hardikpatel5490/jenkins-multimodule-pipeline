@@ -12,14 +12,14 @@ pipeline {
                     def changeset = scm.changeset
                     echo "changeset: ${changeset}"
 
-                    if (changeset == "module1/**")
+                    if ($changeset == "module1/**")
                         dir('module1') {
                             sh 'mvn  -B -ntp clean package'
                             echo "Build is taking very long due to heavy work..."
                             sh 'sleep 100'
                         }
 
-                    if (changeset == "module2/**") {
+                    if ($changeset == "module2/**") {
                         dir('module2') {
                             sh 'mvn  -B -ntp clean package'
                             echo "Build is taking very long due to heavy work..."
