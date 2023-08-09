@@ -29,7 +29,7 @@ pipeline {
       }
     }
     stage('Module2') {
-      when { changeset "module2/*" }
+      when { changeset "module2/**" }
       stages {
         stage('M2.Packaging') {
           steps {
