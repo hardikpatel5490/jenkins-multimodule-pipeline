@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
 //                    def changeset = scm.changeset
-                    echo "changeset: ${scm.changeset}"
+                    echo "changeset: ${scm}"
 //
 //                    if ($changeset == "module1/**")
 //                        dir('module1') {
