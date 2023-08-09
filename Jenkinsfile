@@ -10,8 +10,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def changeset = scm.changeset
-                    echo "changeset: ${changeset}"
+//                    def changeset = scm.changeset
+                    echo "changeset: ${scm.changeset}"
 //
 //                    if ($changeset == "module1/**")
 //                        dir('module1') {
