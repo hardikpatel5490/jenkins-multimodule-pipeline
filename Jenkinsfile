@@ -12,7 +12,7 @@ pipeline {
                 script {
 //                    def changeset = scm.changeset
 //                    echo "changeset 1: ${changeset}"
-                    def changeset = scm.checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/hardikpatel5490/jenkins-multimodule-pipeline.git']]])
+//                    def changeset = scm.checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/hardikpatel5490/jenkins-multimodule-pipeline.git']]])
                     echo "changeset 2: ${scm}"
                     echo "changeset 3: ${changeset}"
 //
