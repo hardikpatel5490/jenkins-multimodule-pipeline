@@ -32,13 +32,22 @@
                     script {
                         if(changedFolders.contains("module1")) {
                              dir ('module1') {
-                                           sh 'mvn  -B -ntp clean package'
-                                           echo "Build is taking very long due to heavy work..."
-                                           sh 'sleep 100000'
-                                           sh 'sleep 100'
-                                           sh 'sleep 100'
+                               sh 'mvn  -B -ntp clean package'
+                               echo "module1 Build is taking very long due to heavy work..."
+                               sh 'sleep 100000'
+                               sh 'sleep 100'
+                               sh 'sleep 100'
                             }
                         }
+                         if(changedFolders.contains("module2")) {
+                             dir ('module2') {
+                               sh 'mvn  -B -ntp clean package'
+                               echo "module2 Build is taking very long due to heavy work..."
+                               sh 'sleep 100000'
+                               sh 'sleep 100'
+                               sh 'sleep 100'
+                            }
+                         }
                     }
                 }
            }
