@@ -11,7 +11,7 @@
                     script {
                        scmVars = checkout scm
 //                       echo "BRANCH_NAME: ${scmVars.GIT_BRANCH}"
-                     changeSets =  scmVars.GIT_COMMIT;
+                     changeSets =  checkout scm.pollingBaseline
 
                         echo "changeSets: ${changeSets}"
                         for (entry in changeSets) {
