@@ -9,8 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    echo"Building the project";
                     def changeset = checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/hardikpatel5490/jenkins-multimodule-pipeline.git']]])
-
+                     echo"Building the {changeset}";
                     for (change in changeset) {
                         if (change.path.startsWith("module1/")) {
                             dir('module1') {
