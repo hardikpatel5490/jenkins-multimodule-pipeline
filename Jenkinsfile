@@ -1,3 +1,16 @@
+def getAffectedFiles(){
+    folderList = []
+    for (changeLogSet in currentBuild.changeSets) {
+        for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
+            for (file in entry.getAffectedFiles()) {
+                folderName = file.getPath().split('/')[0]
+                folderList.add(folderName)
+            }
+        }
+    }
+    return folderList.unique()
+}
+
 pipeline {
     agent any
     tools {
@@ -5,22 +18,11 @@ pipeline {
         jdk 'JDK 8 CJ Hosted'
         git 'Default'
     }
-//     environment {
-//     }
     stages {
         stage('Checkout') {
             steps {
                 script {
-//                     for (changeLogSet in currentBuild.changeSets) {
-//                           for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
-//                               for (file in entry.getAffectedFiles()) {
-//                                 folderName = file.getPath().split('/')[0]
-//                                    env.FOLDERS.add(folderName)
-//                               }
-//                           }
-//                     }
-//                     env.FOLDERS = env.FOLDERS.unique()
-                    def changedFolders = getAffectedFiles();
+                    def changedFolders = getAffectedFiles()
                     echo "Changed folders: ${changedFolders}"
 
                     if (changedFolders.contains("module1")) {
@@ -30,17 +32,4 @@ pipeline {
             }
         }
     }
-    def getAffectedFiles(){
-         folderList = [];
-    for (changeLogSet in currentBuild.changeSets) {
-                              for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
-                                  for (file in entry.getAffectedFiles()) {
-                                    folderName = file.getPath().split('/')[0]
-                                      folderList.add(folderName)
-                                  }
-                              }
-                        }
-      return folderList.unique()
-    }
 }
-
