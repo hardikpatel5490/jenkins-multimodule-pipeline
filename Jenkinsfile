@@ -9,13 +9,8 @@
             stage('Checkout') {
                 steps {
                     script {
-                      def changes = currentBuild.changeSets[0].items
-                                          def module2Changes = changes.findAll { it.path.startsWith('module2/') }
-                                          if (module2Changes) {
-                                              echo "Changes detected in module2"
-                                          } else {
-                                              echo "No changes detected in module2"
-                                          }
+                     scmVars = checkout scm
+                      echo "BRANCH_NAME: ${scmVars.GIT_BRANCH}"
                    }
                 }
             }
