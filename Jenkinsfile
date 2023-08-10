@@ -1,3 +1,4 @@
+
 // pipeline {
 //     agent any
 //     options {
@@ -72,13 +73,13 @@ pipeline {
 // }
 stages{
  stage('Checkout') {
-            steps {
-                script {
-                   echo "Building the project"
-                                       def changeset1 = changeset;
-
+             when {
+                    expression { "module1/**" }
+                }
+                steps {
+                    echo "Hello, bitwiseman!"
                 }
             }
             }
-            }
+
 }
