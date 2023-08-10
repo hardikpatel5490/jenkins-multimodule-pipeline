@@ -9,8 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    def changes = changeset(['module1/**']).asBoolean()
-                    echo"Changes: ${changes}"
+                    def changes = changeset('module1/**').asBoolean()
 //                     if (!(changes.isEmpty().asBoolean())) {
 //                         echo "Building module1"
 //                     }
