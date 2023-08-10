@@ -18,13 +18,10 @@
                                 }
                             }
                         }
-                        if (!changedFolders.empty) {
-                                                echo "Changed folders: ${changedFolders.join(', ')}"
-                                                // Add your further steps or conditions here
-                                            } else {
-                                                echo "No changes found in the specified folders."
-                                            }
                         echo "Changed files: ${changedFolders}"
+                        if(changedFolders.contains("module1")) {
+                            echo "Folder1 or Folder2 changed"
+                        }
                    }
                 }
             }
