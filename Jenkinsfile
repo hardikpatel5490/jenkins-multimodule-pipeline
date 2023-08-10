@@ -39,11 +39,11 @@
 
 pipeline {
   agent any
-  tools {
-    maven '3.8.6'
-    jdk 'JDK 8 CJ Hosted'
-    git 'Default'
-  }
+   tools {
+           maven 'Maven 3.8.6'
+          jdk 'JDK 8 CJ Hosted'
+           git 'Default'
+      }
   stages {
     stage('Module1') {
       when { changeset "module1/**" }
