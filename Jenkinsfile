@@ -34,7 +34,6 @@
                              dir ('module1') {
                                sh 'mvn  -B -ntp clean package'
                                echo "module1 Build is taking very long due to heavy work..."
-                               sh 'sleep 100000'
                                sh 'sleep 100'
                                sh 'sleep 100'
                             }
@@ -43,7 +42,6 @@
                              dir ('module2') {
                                sh 'mvn  -B -ntp clean package'
                                echo "module2 Build is taking very long due to heavy work..."
-                               sh 'sleep 100000'
                                sh 'sleep 100'
                                sh 'sleep 100'
                             }
