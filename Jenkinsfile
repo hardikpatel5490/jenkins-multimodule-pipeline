@@ -16,11 +16,11 @@ pipeline {
                           for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
                               for (file in entry.getAffectedFiles()) {
                                 folderName = file.getPath().split('/')[0]
-                                  FOLDERS.add(folderName) // add changed file to list
+                                   env.FOLDERS.add(folderName)
                               }
                           }
                     }
-                    FOLDERS = FOLDERS.unique();
+                    env.FOLDERS = env.FOLDERS.unique()
                     def changedFolders = FOLDERS
                     echo "Changed folders: ${changedFolders}"
 
