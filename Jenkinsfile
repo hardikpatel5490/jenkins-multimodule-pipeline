@@ -83,6 +83,16 @@ stages{
                            }
                        }
             }
+             when {
+                                       changeset "module2/**"
+                                   }
+                                   steps {
+                                       echo "Building module1"
+                                       dir('module2') {
+                                           sh 'mvn -B -ntp clean package'
+                                       }
+                                   }
+                        }
             }
 
 }
