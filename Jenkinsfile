@@ -9,6 +9,8 @@
             stage('Checkout') {
                 steps {
                     script {
+                    changeset = scm.checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/hardikpatel5490/jenkins-multimodule-pipeline.git']]])
+                     echo "changeset 3: ${changeset}"
                      changedFolders = []
                         for (changeLogSet in currentBuild.changeSets) {
                             for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
