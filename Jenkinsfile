@@ -8,7 +8,7 @@ def getAffectedFiles(){
             }
         }
     }
-    return folderList.unique()
+    return folderList;
 }
 
 pipeline {
