@@ -6,7 +6,6 @@ pipeline {
         git 'Default'
     }
     environment {
-       FOLDERS = getAffectedFiles()
     }
     stages {
         stage('Checkout') {
@@ -21,7 +20,7 @@ pipeline {
 //                           }
 //                     }
 //                     env.FOLDERS = env.FOLDERS.unique()
-                    def changedFolders = env.FOLDERS
+                    def changedFolders = getAffectedFiles();
                     echo "Changed folders: ${changedFolders}"
 
                     if (changedFolders.contains("module1")) {
