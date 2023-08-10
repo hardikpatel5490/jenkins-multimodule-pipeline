@@ -9,25 +9,10 @@
             stage('Checkout') {
                 steps {
                     script {
-                       checkout scm
-
-                                          // Get the changeset for the specified path
-                                          def changes = git(
-                                              branch: 'master', // Specify the branch you want to check
-                                              changelog: true,
-                                              poll: false // Disable automatic polling for changes
-                                          )
-
-                                          if (changes.any()) {
-                                              echo "Changes detected in module2:"
-                                              for (change in changes) {
-                                                  echo "Commit: ${change.commitId}"
-                                                  echo "Author: ${change.author}"
-                                                  echo "Message: ${change.msg}"
-                                              }
-                                          } else {
-                                              echo "No changes detected in module2"
-                                          }
+                        def changes = changeset([path: "module2/**"])
+                        if (changes.any()) {
+                            echo "Changes detected in module2"
+                        }
                    }
                 }
             }
