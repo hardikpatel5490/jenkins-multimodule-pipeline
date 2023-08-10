@@ -74,7 +74,7 @@ pipeline {
 stages{
  stage('Checkout') {
              when {
-                    expression { "module1/**" }
+                    changeset { "module1/**" }
                      steps {
                                         echo "Hello, bitwiseman!"
                          }
