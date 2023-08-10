@@ -5,8 +5,9 @@ pipeline {
         jdk 'JDK 8 CJ Hosted'
         git 'Default'
     }
-    script{
-       folders = []
+    environment {
+
+       FOLDERS = []
             currentBuild.changeSets.each { changeLogSet ->
                 changeLogSet.getItems().each { entry ->
                     entry.getAffectedFiles().each { file ->
@@ -14,13 +15,13 @@ pipeline {
                     }
                 }
             }
-        folders = folders.unique();
+        FOLDERS = FOLDERS.unique();
     }
     stages {
         stage('Checkout') {
             steps {
                 script {
-                    def changedFolders = folders
+                    def changedFolders = FOLDERS
                     echo "Changed folders: ${changedFolders}"
 
                     if (changedFolders.contains("module1")) {
