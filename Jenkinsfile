@@ -10,7 +10,10 @@ pipeline {
             steps {
                 script {
                     if (changeset(["module1/**"]).asBoolean()) {
-                        echo "Building module2"
+                        echo "Building module1"
+                    }
+                    if (changeset(["module2/**"]).asBoolean()) {
+                          echo "Building module2"
                     }
                 }
             }
