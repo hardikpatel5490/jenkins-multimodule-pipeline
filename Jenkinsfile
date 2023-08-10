@@ -14,7 +14,7 @@
                      changeSets = scmVars.GIT_COMMIT
                         echo "changeSets: ${changeSets}"
                         for (entry in changeSets) {
-                                                for (path in entry.affectedFiles) {
+                                                for (path in entry.affectedPaths) {
                                                     // Extract the folder name from the path
                                                      folderName = path.path.split('/')[0]
                                                     echo "Folder Name: ${folderName}"
