@@ -30,7 +30,7 @@ stages{
 //             }
 steps {
     script {
-      if((changeset "module1/**").toBoolean()) {
+      if((changeset "module1/**").toBoolean())) {
           echo "Building module2"
       }
     }
