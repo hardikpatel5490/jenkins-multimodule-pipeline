@@ -9,9 +9,9 @@
             stage('Checkout') {
                 steps {
                     script {
-//                          scmVars = checkout scm
+                       scmVars = checkout scm
 //                       echo "BRANCH_NAME: ${scmVars.GIT_BRANCH}"
-                     changeSets =  checkout(scm).pollingBaseline
+                     changeSets =  scmVars.GIT_COMMIT;
 
                         echo "changeSets: ${changeSets}"
                         for (entry in changeSets) {
