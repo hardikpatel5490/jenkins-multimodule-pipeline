@@ -48,6 +48,8 @@ pipeline {
     stage('Module1') {
     steps {
        script {
+                def changeset = scm.pollChanges([path: 'module1/**'])
+                echo"Building the ${changeset}";
                 if (changeset "module1/**") {
                     dir('module1') {
                         sh 'mvn -B -ntp clean package'
