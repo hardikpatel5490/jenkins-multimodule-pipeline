@@ -52,7 +52,7 @@ pipeline {
                                     changelog: true,
                                     poll: false,
                                     scm: [$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/hardikpatel5490/jenkins-multimodule-pipeline.git']]]
-            echo "Building the {changeset}"
+            echo "Building the changeset: ${changeset}"
             for (change in changeset) {
                 if (change.path.startsWith("module1/")) {
                     dir('module1') {
