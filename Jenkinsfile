@@ -75,9 +75,9 @@ stages{
  stage('Checkout') {
              when {
                     expression { "module1/**" }
-                }
-                steps {
-                    echo "Hello, bitwiseman!"
+                     steps {
+                                        echo "Hello, bitwiseman!"
+                         }
                 }
             }
             }
