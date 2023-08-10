@@ -19,16 +19,19 @@ pipeline {
             }
         }
     }
-}
-
-getChangedFolders() {
-     folders = []
-    currentBuild.changeSets.each { changeLogSet ->
-        changeLogSet.getItems().each { entry ->
-            entry.getAffectedFiles().each { file ->
-                folders << file.getPath().split('/')[0]
+    script{
+    def getChangedFolders() {
+         folders = []
+        currentBuild.changeSets.each { changeLogSet ->
+            changeLogSet.getItems().each { entry ->
+                entry.getAffectedFiles().each { file ->
+                    folders << file.getPath().split('/')[0]
+                }
             }
         }
+        return folders.unique()
     }
-    return folders.unique()
+    }
 }
+
+
