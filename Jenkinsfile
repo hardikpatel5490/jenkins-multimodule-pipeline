@@ -11,7 +11,7 @@
                     script {
                          scmVars = checkout scm
                       echo "BRANCH_NAME: ${scmVars.GIT_BRANCH}"
-                      changeSets = currentBuild.changeSets
+                    def changeSets = scmVars.GIT_COMMIT
                    }
                 }
             }
