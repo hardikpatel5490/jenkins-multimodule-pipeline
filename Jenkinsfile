@@ -47,15 +47,12 @@ pipeline {
   stages {
     stage('Module1') {
       when { changeset "module1/**" }
-      stages {
-        stage('M1.Packaging') {
-          steps {
+       {
             dir ('module1') {
               sh 'mvn  -B -ntp clean package'
               echo "Build is taking very long due to heavy work..."
               sh 'sleep 100'
              }
-          }
         }
         stage('M1.Installing') {
           when { changeset "module1/**" }
