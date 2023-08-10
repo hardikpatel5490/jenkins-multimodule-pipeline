@@ -20,7 +20,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    def changedFolders = getChangedFolders()
+                    def changedFolders = folders
                     echo "Changed folders: ${changedFolders}"
 
                     if (changedFolders.contains("module1")) {
