@@ -9,16 +9,22 @@
             stage('Checkout') {
                 steps {
                     script {
-                     changedFiles = []
+                     changedFolders = []
                         for (changeLogSet in currentBuild.changeSets) {
                             for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
                                 for (file in entry.getAffectedFiles()) {
                                   folderName = file.getPath().split('/')[0]
-                                    changedFiles.add(folderName) // add changed file to list
+                                    changedFolders.add(folderName) // add changed file to list
                                 }
                             }
                         }
-                        echo "Changed files: ${changedFiles}"
+                        if (!changedFolders.empty) {
+                                                echo "Changed folders: ${changedFolders.join(', ')}"
+                                                // Add your further steps or conditions here
+                                            } else {
+                                                echo "No changes found in the specified folders."
+                                            }
+                        echo "Changed files: ${changedFolders}"
                    }
                 }
             }
