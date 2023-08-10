@@ -75,7 +75,7 @@ stages{
             steps {
                 script {
                    echo "Building the project"
-                                       def changeset = scm.pollChanges([path: 'module1/**'])
+                                       def changeset = scm.changeset;
 
                 }
             }
