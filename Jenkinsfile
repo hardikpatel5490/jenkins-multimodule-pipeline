@@ -87,7 +87,7 @@ stages{
                                        changeset "module2/**"
                                    }
                                    steps {
-                                       echo "Building module1"
+                                       echo "Building module2"
                                        dir('module2') {
                                            sh 'mvn -B -ntp clean package'
                                        }
