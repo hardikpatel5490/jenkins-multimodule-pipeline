@@ -19,6 +19,8 @@ pipeline {
             }
         }
     }
+}
+
 def getChangedFolders() {
      folders = []
     currentBuild.changeSets.each { changeLogSet ->
@@ -30,6 +32,3 @@ def getChangedFolders() {
     }
     return folders.unique()
 }
-}
-
-
