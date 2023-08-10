@@ -19,7 +19,7 @@
                                 }
                             }
                         }
-                        echo "Changed files: ${changedFolders}"
+                        echo "Changed files: ${changedFolders.unique()}"
                         if(changedFolders.contains("module1")) {
                             echo "Folder1 or Folder2 changed"
                         }
