@@ -9,13 +9,14 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    def changes = changeset(['module1/**'])
-                    if (!(changes.isEmpty().asBoolean())) {
-                        echo "Building module1"
-                    }
-                    if (changeset("module2/**").asBoolean()) {
-                          echo "Building module2"
-                    }
+                    def changes = changeset(['module1/**']).isEmpty();
+                    echo"Changes: ${changes}"
+//                     if (!(changes.isEmpty().asBoolean())) {
+//                         echo "Building module1"
+//                     }
+//                     if (changeset("module2/**").asBoolean()) {
+//                           echo "Building module2"
+//                     }
                 }
             }
         }
