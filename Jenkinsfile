@@ -33,15 +33,11 @@
                         if(changedFolders.contains("module1")) {
                              dir ('module1') {
                                echo "module1 Build is taking very long due to heavy work..."
-                               sh 'sleep 100'
-                               sh 'sleep 100'
                             }
                         }
                         if(changedFolders.contains("module2")) {
                              dir ('module2') {
                                echo "module2 Build is taking very long due to heavy work..."
-                               sh 'sleep 100'
-                               sh 'sleep 100'
                             }
                         }
                     }
