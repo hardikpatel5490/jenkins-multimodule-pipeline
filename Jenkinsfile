@@ -10,12 +10,12 @@ pipeline {
             steps {
                 script {
                     def changes = changeset('module1/**').asBoolean()
-//                     if (!(changes.isEmpty().asBoolean())) {
-//                         echo "Building module1"
-//                     }
-//                     if (changeset("module2/**").asBoolean()) {
-//                           echo "Building module2"
-//                     }
+                    if (changeset("module2/**").asBoolean()) {
+                        echo "Building module1"
+                    }
+                    if (changeset("module2/**").asBoolean()) {
+                          echo "Building module2"
+                    }
                 }
             }
         }
