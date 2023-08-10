@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     def changes = changeset(['module1/**'])
-                    if (!(changes.isEmpty().asBoolean()) {
+                    if (!(changes.isEmpty().asBoolean())) {
                         echo "Building module1"
                     }
                     if (changeset("module2/**").asBoolean()) {
