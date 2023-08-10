@@ -46,45 +46,23 @@ pipeline {
       }
   stages {
     stage('Module1') {
-      when { changeset "module1/**" }
-       {
-            dir ('module1') {
-              sh 'mvn  -B -ntp clean package'
-              echo "Build is taking very long due to heavy work..."
-              sh 'sleep 100'
-             }
-        }
-        stage('M1.Installing') {
-          when { changeset "module1/**" }
-          steps {
-            dir ('module1') {
-              sh 'mvn  -B -ntp install'
+    steps {
+       script {
+            def changeset = checkout(
+                                    changelog: true,
+                                    poll: false,
+                                    scm: [$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/hardikpatel5490/jenkins-multimodule-pipeline.git']]]
+            echo "Building the {changeset}"
+            for (change in changeset) {
+                if (change.path.startsWith("module1/")) {
+                    dir('module1') {
+                        sh 'mvn -B -ntp clean package'
+                        echo "Build for module1 completed."
+                    }
+                }
             }
-          }
-        }
-      }
+
+       }
     }
-    stage('Module2') {
-      when { changeset "module2/*" }
-      stages {
-        stage('M2.Packaging') {
-          steps {
-            dir ('module2') {
-              sh 'mvn  -B -ntp clean package'
-              echo "Build is taking very long due to heavy work..."
-              sh 'sleep 100'
-            }
-          }
-        }
-        stage('M2.Installing') {
-          when { changeset "module1/*" }
-          steps {
-            dir ('module2') {
-              sh 'mvn  -B -ntp install'
-            }
-          }
-        }
-      }
-    }
-  }
+ }
 }
