@@ -5,8 +5,8 @@ pipeline {
         jdk 'JDK 8 CJ Hosted'
         git 'Default'
     }
-    environment {
-    }
+//     environment {
+//     }
     stages {
         stage('Checkout') {
             steps {
