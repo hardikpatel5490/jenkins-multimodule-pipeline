@@ -6,21 +6,21 @@ pipeline {
         git 'Default'
     }
     environment {
-
        FOLDERS = []
-            currentBuild.changeSets.each { changeLogSet ->
-                changeLogSet.getItems().each { entry ->
-                    entry.getAffectedFiles().each { file ->
-                        folders << file.getPath().split('/')[0]
-                    }
-                }
-            }
-        FOLDERS = FOLDERS.unique();
     }
     stages {
         stage('Checkout') {
             steps {
                 script {
+                    for (changeLogSet in currentBuild.changeSets) {
+                          for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
+                              for (file in entry.getAffectedFiles()) {
+                                folderName = file.getPath().split('/')[0]
+                                  FOLDERS.add(folderName) // add changed file to list
+                              }
+                          }
+                    }
+                    FOLDERS = FOLDERS.unique();
                     def changedFolders = FOLDERS
                     echo "Changed folders: ${changedFolders}"
 
