@@ -40,8 +40,8 @@
 pipeline {
   agent any
   tools {
-    maven 'Maven 3.9.0'
-    jdk 'jdk17'
+    maven '3.8.6'
+    jdk 'JDK 8 CJ Hosted'
     git 'Default'
   }
   stages {
