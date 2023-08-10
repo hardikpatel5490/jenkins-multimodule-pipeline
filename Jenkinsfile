@@ -75,7 +75,7 @@ stages{
             steps {
                 script {
                    echo "Building the project"
-                                       def changeset = scm.changeset;
+                                       def changeset1 = changeset;
 
                 }
             }
