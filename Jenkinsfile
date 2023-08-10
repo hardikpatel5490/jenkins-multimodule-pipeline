@@ -44,30 +44,39 @@ pipeline {
           jdk 'JDK 8 CJ Hosted'
            git 'Default'
       }
-  stages {
-    stage('Module1') {
-    steps {
-      script {
-                          echo "Building the project"
-                          def changeset = scm.pollChanges([path: 'module1/**'])
-                          echo "Changeset: ${changeset}"
-                          for (change in changeset) {
-                              if (change.path.startsWith("module1/")) {
-                                  dir('module1') {
-                                      sh 'mvn -B -ntp clean package'
-                                      echo "Build for module1 completed."
-                                  }
-                              }
-
-                              if (change.path.startsWith("module2/")) {
-                                  dir('module2') {
-                                      sh 'mvn -B -ntp clean package'
-                                      echo "Build for module2 completed."
-                                  }
-                              }
-                          }
-      }
-    }
- }
-}
+//   stages {
+//     stage('Module1') {
+//     steps {
+//       script {
+//                           echo "Building the project"
+//                           def changeset = scm.pollChanges([path: 'module1/**'])
+//                           echo "Changeset: ${changeset}"
+//                           for (change in changeset) {
+//                               if (change.path.startsWith("module1/")) {
+//                                   dir('module1') {
+//                                       sh 'mvn -B -ntp clean package'
+//                                       echo "Build for module1 completed."
+//                                   }
+//                               }
+//
+//                               if (change.path.startsWith("module2/")) {
+//                                   dir('module2') {
+//                                       sh 'mvn -B -ntp clean package'
+//                                       echo "Build for module2 completed."
+//                                   }
+//                               }
+//                           }
+//       }
+//     }
+//  }
+// }
+stages{
+ stage('Checkout') {
+            steps {
+                script {
+                   echo "Building the project"
+                }
+            }
+            }
+            }
 }
