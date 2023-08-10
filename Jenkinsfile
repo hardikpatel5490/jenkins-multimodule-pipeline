@@ -16,7 +16,7 @@
                         for (entry in changeSets) {
                                                 for (path in entry.affectedFiles) {
                                                     // Extract the folder name from the path
-                                                    def folderName = path.path.split('/')[0]
+                                                     folderName = path.path.split('/')[0]
                                                     echo "Folder Name: ${folderName}"
                                                 }
                                             }
