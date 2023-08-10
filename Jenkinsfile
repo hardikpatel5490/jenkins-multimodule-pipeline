@@ -1,15 +1,4 @@
-def getAffectedFiles(){
-    folderList = []
-    for (changeLogSet in currentBuild.changeSets) {
-        for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
-            for (file in entry.getAffectedFiles()) {
-                folderName = file.getPath().split('/')[0]
-                folderList.add(folderName)
-            }
-        }
-    }
-    return folderList;
-}
+
 
 pipeline {
     agent any
@@ -22,7 +11,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    def changedFolders = getAffectedFiles()
+                 env.FOLDER-LIST = []
+                    for (changeLogSet in currentBuild.changeSets) {
+                        for (entry in changeLogSet.getItems()) { // for each commit in the detected changes
+                            for (file in entry.getAffectedFiles()) {
+                                folderName = file.getPath().split('/')[0]
+                                env.FOLDER-LIST.add(folderName)
+                            }
+                        }
+                    }
+                    def changedFolders = env.FOLDER-LIST;
                     echo "Changed folders: ${changedFolders}"
 
                     if (changedFolders.contains("module1")) {
