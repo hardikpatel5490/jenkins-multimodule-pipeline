@@ -9,10 +9,13 @@
             stage('Checkout') {
                 steps {
                     script {
-                        def changes = changeset([path: "module2/**"])
-                        if (changes.any()) {
-                            echo "Changes detected in module2"
-                        }
+                      def changes = currentBuild.changeSets[0].items
+                                          def module2Changes = changes.findAll { it.path.startsWith('module2/') }
+                                          if (module2Changes) {
+                                              echo "Changes detected in module2"
+                                          } else {
+                                              echo "No changes detected in module2"
+                                          }
                    }
                 }
             }
