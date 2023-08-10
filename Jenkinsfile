@@ -73,12 +73,15 @@ pipeline {
 // }
 stages{
  stage('Checkout') {
-             when {
-                    changeset { "module1/**" }
-                     steps {
-                                        echo "Hello, bitwiseman!"
-                         }
-                }
+            when {
+                           changeset "module1/**"
+                       }
+                       steps {
+                           echo "Building module1"
+                           dir('module1') {
+                               sh 'mvn -B -ntp clean package'
+                           }
+                       }
             }
             }
 
