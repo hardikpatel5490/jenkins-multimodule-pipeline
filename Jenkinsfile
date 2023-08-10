@@ -9,12 +9,11 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    test-mode=changeset("module2/**")
-                    echo "test-mode: ${test-mode}"
-                    if (changeset("module2/**").asBoolean()) {
+
+                    if (changeset("module2/**").toBoolean()) {
                         echo "Building module1"
                     }
-                    if (changeset("module2/**").asBoolean()) {
+                    if (changeset("module2/**").toBoolean()()) {
                           echo "Building module2"
                     }
                 }
