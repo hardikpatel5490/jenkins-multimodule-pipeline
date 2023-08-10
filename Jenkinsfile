@@ -21,7 +21,7 @@ pipeline {
     }
 }
 
-def getChangedFolders() {
+getChangedFolders() {
      folders = []
     currentBuild.changeSets.each { changeLogSet ->
         changeLogSet.getItems().each { entry ->
