@@ -82,7 +82,6 @@ stages{
                                sh 'mvn -B -ntp clean package'
                            }
                        }
-            }
              when {
                                        changeset "module2/**"
                                    }
@@ -94,5 +93,4 @@ stages{
                                    }
                         }
             }
-
 }
