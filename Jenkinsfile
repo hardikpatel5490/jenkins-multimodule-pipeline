@@ -12,6 +12,7 @@
                          scmVars = checkout scm
                       echo "BRANCH_NAME: ${scmVars.GIT_BRANCH}"
                      changeSets = scmVars.GIT_COMMIT
+                        echo "changeSets: ${changeSets}"
                    }
                 }
             }
