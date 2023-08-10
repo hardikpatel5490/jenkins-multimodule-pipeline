@@ -8,25 +8,33 @@ pipeline {
       }
 stages{
  stage('Checkout') {
-            when {
-                           changeset "module1/**"
-                       }
-                       steps {
-                           echo "Building module1"
-                           dir('module1') {
-                               sh 'mvn -B -ntp clean package'
-                           }
-                       }
-               when {
-                                          changeset "module2/**"
-                                      }
-                                      steps {
-                                          echo "Building module2"
-                                          dir('module2') {
-                                              sh 'mvn -B -ntp clean package'
-                                          }
-                                      }
-            }
-            }
-
+//             when {
+//                            changeset "module1/**"
+//                        }
+//                        steps {
+//                            echo "Building module1"
+//                            dir('module1') {
+//                                sh 'mvn -B -ntp clean package'
+//                            }
+//                        }
+//                when {
+//                                           changeset "module2/**"
+//                                       }
+//                                       steps {
+//                                           echo "Building module2"
+//                                           dir('module2') {
+//                                               sh 'mvn -B -ntp clean package'
+//                                           }
+//                                       }
+//             }
+//             }
+steps {
+    script {
+      if((changeset "module1/**").toBoolean()) {
+          echo "Building module2"
+      }
+    }
+  }
+}
+}
 }
