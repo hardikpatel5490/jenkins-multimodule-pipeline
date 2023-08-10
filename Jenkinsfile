@@ -9,8 +9,9 @@
             stage('Checkout') {
                 steps {
                     script {
-                     scmVars = checkout scm
+                         scmVars = checkout scm
                       echo "BRANCH_NAME: ${scmVars.GIT_BRANCH}"
+                      changeSets = currentBuild.changeSets
                    }
                 }
             }
