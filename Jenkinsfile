@@ -24,6 +24,7 @@ pipeline {
                     if (changedFolders.contains("module1")) {
                         echo "Folder1 or Folder2 changed"
                     }
+                    throw new Exception("Test")
                 }
             }
         }
@@ -49,7 +50,7 @@ pipeline {
         failure {
             script {
                 echo "One or more stages failed, retrying..."
-                retry(3) {
+                retry('Build', 3) {
                     echo "Retrying..."
                 }
             }
