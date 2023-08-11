@@ -47,8 +47,10 @@ pipeline {
     }
     post {
         failure {
-            script { echo "One or more stages failed, retrying..." } retry(3)
-            // Retry all stages up to 3 times on failure         }     }
+            script {
+                echo "One or more stages failed, retrying..."
+                retry(3)
+            }
         }
     }
 }
