@@ -33,7 +33,6 @@ pipeline {
                     if (changedFolders.contains("module1")) {
                         dir('module1') {
                             echo "module1 Build is taking very long due to heavy work..."
-                            throw new Exception("Build failed")
                         }
                     }
                     if (changedFolders.contains("module2")) {
@@ -50,7 +49,9 @@ pipeline {
         failure {
             script {
                 echo "One or more stages failed, retrying..."
-                retry(3)
+                retry(3) {
+                    echo "Retrying..."
+                }
             }
         }
     }
